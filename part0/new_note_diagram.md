@@ -10,12 +10,24 @@ sequenceDiagram
 
     Browser->>Server: GET /notes
     activate Server
-    Server-->>Browser: Updated HTML page
+    Server-->>Browser: HTML document (updated)
     deactivate Server
+
+    Browser->>Server: GET /main.css
+    activate Server
+    Server-->>Browser: CSS file
+    deactivate Server
+
+    Browser->>Server: GET /main.js
+    activate Server
+    Server-->>Browser: JavaScript file
+    deactivate Server
+
+    Note right of Browser: The browser starts executing JavaScript
 
     Browser->>Server: GET /data.json
     activate Server
-    Server-->>Browser: Updated notes in JSON format
+    Server-->>Browser: Updated JSON data with new note
     deactivate Server
 
-    Note right of Browser: The page reloads and fetches the updated list of notes.
+    Note right of Browser: The browser renders the updated list of notes.
